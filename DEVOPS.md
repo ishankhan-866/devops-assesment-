@@ -135,3 +135,6 @@ terraform apply -var="key_name=<your-keypair-name>"
 **5. Containers ran as root**
 - Cause: single-stage backend Dockerfile and `nginx:alpine` both run as root by default.
 - Fix: multi-stage backend image with a dedicated `appuser`; frontend switched to `nginxinc/nginx-unprivileged` on port 8080 (published as 80:8080).
+
+
+Note: The deploy step timed out because docker build on the small EC2 instance is slow; images are built and pushed to Docker Hub successfully by the pipeline.
